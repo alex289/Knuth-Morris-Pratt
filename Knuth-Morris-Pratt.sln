@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knuth-Morris-Pratt", "Knuth-Morris-Pratt\Knuth-Morris-Pratt.csproj", "{284425F6-C435-430A-A550-E4B4AC021E78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knuth-Morris-Pratt.Tests", "Knuth-Morris-Pratt.Tests\Knuth-Morris-Pratt.Tests.csproj", "{AAD79F9D-FA4C-42C1-B3E6-F94FCCA40D6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{284425F6-C435-430A-A550-E4B4AC021E78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{284425F6-C435-430A-A550-E4B4AC021E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{284425F6-C435-430A-A550-E4B4AC021E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{284425F6-C435-430A-A550-E4B4AC021E78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAD79F9D-FA4C-42C1-B3E6-F94FCCA40D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD79F9D-FA4C-42C1-B3E6-F94FCCA40D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD79F9D-FA4C-42C1-B3E6-F94FCCA40D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD79F9D-FA4C-42C1-B3E6-F94FCCA40D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
