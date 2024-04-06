@@ -1,5 +1,5 @@
 using BenchmarkDotNet.Attributes;
-using Knuth_Morris_Pratt.Benchmarks.Comparisons;
+using Knuth_Morris_Pratt.Comparisons;
 
 namespace Knuth_Morris_Pratt.Benchmarks;
 
@@ -27,7 +27,7 @@ public class TextSearchBenchmark
     }
 
     [Benchmark]
-    public int KnuthMorrisPrattSearch() => TextSearchAlgorithm.Search(data, pattern);
+    public int KnuthMorrisPrattSearch() => KnuthMorrisPrattAlgorithm.Search(data, pattern);
 
     [Benchmark]
     public int NaiveSearch() => NaiveAlgorithm.Search(data, pattern);

@@ -3,14 +3,14 @@ using Xunit;
 
 namespace Knuth_Morris_Pratt.Tests;
 
-public class TextSearchAlgorithmTests
+public class KnuthMorrisPrattAlgorithmTests
 {
     [Fact]
     public void Should_Create_Prefix_Table_Correctly()
     {
         var pattern = "ababcabab";
 
-        var prefixTable = TextSearchAlgorithm.PrefixAnalysis(pattern);
+        var prefixTable = KnuthMorrisPrattAlgorithm.PrefixAnalysis(pattern);
         prefixTable.Should().BeEquivalentTo([-1, 0, 0, 1, 2, 0, 1, 2, 3, 4]);
     }
 
@@ -20,12 +20,12 @@ public class TextSearchAlgorithmTests
         var pattern = "ABCDABD";
         var text = "ABC ABCDAB ABCDABCDABDE";
 
-        var result = TextSearchAlgorithm.Search(pattern, text);
+        var result = KnuthMorrisPrattAlgorithm.Search(pattern, text);
         result.Should().Be(1);
 
         // Manually getting the prefix table should also work
-        var prefixTable = TextSearchAlgorithm.PrefixAnalysis(pattern);
-        var resultWithPrefixTable = TextSearchAlgorithm.Search(pattern, prefixTable, text);
+        var prefixTable = KnuthMorrisPrattAlgorithm.PrefixAnalysis(pattern);
+        var resultWithPrefixTable = KnuthMorrisPrattAlgorithm.Search(pattern, prefixTable, text);
 
         resultWithPrefixTable.Should().Be(result);
     }
@@ -36,7 +36,7 @@ public class TextSearchAlgorithmTests
         var pattern = "Pizza";
         var text = "asdasdasdasdadsPiasdasdaasdnasdasd";
 
-        var result = TextSearchAlgorithm.Search(pattern, text);
+        var result = KnuthMorrisPrattAlgorithm.Search(pattern, text);
         result.Should().Be(0);
     }
 
@@ -46,7 +46,7 @@ public class TextSearchAlgorithmTests
         var pattern = "Pizza";
         var text = "asdasdaPisdasdadsPizzaasdnasdasdasdasdaPisdasdadsPizzaasdnasdasd";
 
-        var result = TextSearchAlgorithm.Search(pattern, text);
+        var result = KnuthMorrisPrattAlgorithm.Search(pattern, text);
         result.Should().Be(2);
     }
 
@@ -56,7 +56,7 @@ public class TextSearchAlgorithmTests
         var pattern = "pIZZa";
         var text = "asdasdaPizzasdasdadspIZZaasdnasdasd";
 
-        var result = TextSearchAlgorithm.Search(pattern, text);
+        var result = KnuthMorrisPrattAlgorithm.Search(pattern, text);
         result.Should().Be(1);
     }
 }

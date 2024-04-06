@@ -3,7 +3,7 @@
 /// <summary>
 /// This class implements the Knuth-Morris-Pratt text search algorithm.
 /// </summary>
-public static class TextSearchAlgorithm
+public static class KnuthMorrisPrattAlgorithm
 {
     /// <summary>
     /// Analyzes the given pattern and creates a prefix table.

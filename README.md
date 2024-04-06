@@ -11,6 +11,8 @@ This repository contains an implementation of the Knuth-Morris-Pratt algorithm i
 
 ## Installation
 
+> Requires .NET 8
+
 To use this implementation of the KMP algorithm, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/your-username/Knuth-Morris-Pratt.git`
@@ -20,29 +22,20 @@ To use this implementation of the KMP algorithm, follow these steps:
 
 ## Usage
 
-To use the KMP algorithm, you can follow these steps:
-
-1. Import the KMP module into your code: `using Knuth_Morris_Pratt;`
-2. Create an instance of the KMP class: `var textSearchAlgorithm = new TextSearchAlgorithm();`
-3. Call the `Search` method on the KMP instance, passing in the text and pattern as arguments: `textSearchAlgorithm.Search(pattern, text)`
-4. The `Search` method will return the indices of all occurrences of the pattern within the text.
-
-## Examples
-
-Here's an example usage of the KMP algorithm:
+To use the KMP algorithm, use it like this:
 
 ```csharp
 using Knuth_Morris_Pratt;
 
-var textSearchAlgorithm = new TextSearchAlgorithm();
-var pattern = "abc";
-var text = "ababcabcababcabcabc";
-var occurrencesAmount = textSearchAlgorithm.Search(pattern, text);
+var pattern = "ABCDABD";
+var text = "ABC ABCDAB ABCDABCDABDE";
+
+var result = KnuthMorrisPrattAlgorithm.Search(pattern, text);
 Console.WriteLine($"Pattern '{pattern}' occurs {occurrencesAmount} times in the text.");
 ```
 
 ## Benchmarks
 
-The benchmarks can be found in the .Benchmark project.
+The benchmarks can be found in the .Benchmark project and compare the KMP with the naive string search and the boyer moore string search algorithms.
 
 **Set the configuration to Release Mode before running the benchmarks**
