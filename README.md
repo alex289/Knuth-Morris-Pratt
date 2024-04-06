@@ -2,6 +2,13 @@
 
 This repository contains an implementation of the Knuth-Morris-Pratt algorithm in C#. The KMP algorithm is a string searching algorithm that efficiently finds occurrences of a pattern within a larger text.
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Benchmarks](#benchmarks)
+
 ## Installation
 
 To use this implementation of the KMP algorithm, follow these steps:
@@ -33,3 +40,9 @@ var text = "ababcabcababcabcabc";
 var occurrencesAmount = textSearchAlgorithm.Search(pattern, text);
 Console.WriteLine($"Pattern '{pattern}' occurs {occurrencesAmount} times in the text.");
 ```
+
+## Benchmarks
+
+The benchmarks can be found in the .Benchmark project.
+
+**Set the configuration to Release Mode before running the benchmarks**

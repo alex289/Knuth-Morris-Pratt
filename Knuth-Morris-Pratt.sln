@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knuth-Morris-Pratt", "Knuth
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knuth-Morris-Pratt.Tests", "Knuth-Morris-Pratt.Tests\Knuth-Morris-Pratt.Tests.csproj", "{AAD79F9D-FA4C-42C1-B3E6-F94FCCA40D6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knuth-Morris-Pratt.Benchmarks", "Knuth-Morris-Pratt.Benchmarks\Knuth-Morris-Pratt.Benchmarks.csproj", "{C93FD72A-A972-4A71-B80A-6C593149C2AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{AAD79F9D-FA4C-42C1-B3E6-F94FCCA40D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAD79F9D-FA4C-42C1-B3E6-F94FCCA40D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAD79F9D-FA4C-42C1-B3E6-F94FCCA40D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C93FD72A-A972-4A71-B80A-6C593149C2AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C93FD72A-A972-4A71-B80A-6C593149C2AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C93FD72A-A972-4A71-B80A-6C593149C2AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C93FD72A-A972-4A71-B80A-6C593149C2AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

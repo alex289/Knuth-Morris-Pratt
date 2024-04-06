@@ -3,14 +3,14 @@
 /// <summary>
 /// This class implements the Knuth-Morris-Pratt text search algorithm.
 /// </summary>
-public sealed class TextSearchAlgorithm
+public static class TextSearchAlgorithm
 {
     /// <summary>
     /// Analyzes the given pattern and creates a prefix table.
     /// </summary>
     /// <param name="pattern">The pattern to analyze.</param>
     /// <returns>The prefix table for the given pattern.</returns>
-    public int[] PrefixAnalysis(string pattern)
+    public static int[] PrefixAnalysis(string pattern)
     {
         var prefixLength = -1;
         var prefixTable = new int[pattern.Length + 1];
@@ -38,7 +38,7 @@ public sealed class TextSearchAlgorithm
     /// <param name="pattern">The pattern to search for.</param>
     /// <param name="text">The text to search in.</param>
     /// <returns>The number of matches found.</returns>
-    public int Search(string pattern, string text)
+    public static int Search(string pattern, string text)
     {
         var prefixTable = PrefixAnalysis(pattern);
         return Search(pattern, prefixTable, text);
@@ -51,7 +51,7 @@ public sealed class TextSearchAlgorithm
     /// <param name="prefixTable">The prefix table to use for the search.</param>
     /// <param name="text">The text to search in.</param>
     /// <returns>The number of matches found.</returns>
-    public int Search(string pattern, int[] prefixTable, string text)
+    public static int Search(string pattern, int[] prefixTable, string text)
     {
         var amountOfMatches = 0;
         var positionInTerm = 0;

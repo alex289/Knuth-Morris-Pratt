@@ -10,9 +10,7 @@ public class TextSearchAlgorithmTests
     {
         var pattern = "ababcabab";
 
-        var textSearchAlgorithm = new TextSearchAlgorithm();
-
-        var prefixTable = textSearchAlgorithm.PrefixAnalysis(pattern);
+        var prefixTable = TextSearchAlgorithm.PrefixAnalysis(pattern);
         prefixTable.Should().BeEquivalentTo([-1, 0, 0, 1, 2, 0, 1, 2, 3, 4]);
     }
 
@@ -22,14 +20,12 @@ public class TextSearchAlgorithmTests
         var pattern = "ABCDABD";
         var text = "ABC ABCDAB ABCDABCDABDE";
 
-        var textSearchAlgorithm = new TextSearchAlgorithm();
-
-        var result = textSearchAlgorithm.Search(pattern, text);
+        var result = TextSearchAlgorithm.Search(pattern, text);
         result.Should().Be(1);
 
         // Manually getting the prefix table should also work
-        var prefixTable = textSearchAlgorithm.PrefixAnalysis(pattern);
-        var resultWithPrefixTable = textSearchAlgorithm.Search(pattern, prefixTable, text);
+        var prefixTable = TextSearchAlgorithm.PrefixAnalysis(pattern);
+        var resultWithPrefixTable = TextSearchAlgorithm.Search(pattern, prefixTable, text);
 
         resultWithPrefixTable.Should().Be(result);
     }
@@ -40,9 +36,7 @@ public class TextSearchAlgorithmTests
         var pattern = "Pizza";
         var text = "asdasdasdasdadsPiasdasdaasdnasdasd";
 
-        var textSearchAlgorithm = new TextSearchAlgorithm();
-
-        var result = textSearchAlgorithm.Search(pattern, text);
+        var result = TextSearchAlgorithm.Search(pattern, text);
         result.Should().Be(0);
     }
 
@@ -52,9 +46,7 @@ public class TextSearchAlgorithmTests
         var pattern = "Pizza";
         var text = "asdasdaPisdasdadsPizzaasdnasdasdasdasdaPisdasdadsPizzaasdnasdasd";
 
-        var textSearchAlgorithm = new TextSearchAlgorithm();
-
-        var result = textSearchAlgorithm.Search(pattern, text);
+        var result = TextSearchAlgorithm.Search(pattern, text);
         result.Should().Be(2);
     }
 
@@ -64,9 +56,7 @@ public class TextSearchAlgorithmTests
         var pattern = "pIZZa";
         var text = "asdasdaPizzasdasdadspIZZaasdnasdasd";
 
-        var textSearchAlgorithm = new TextSearchAlgorithm();
-
-        var result = textSearchAlgorithm.Search(pattern, text);
+        var result = TextSearchAlgorithm.Search(pattern, text);
         result.Should().Be(1);
     }
 }
