@@ -30,8 +30,8 @@ using Knuth_Morris_Pratt;
 var pattern = "ABCDABD";
 var text = "ABC ABCDAB ABCDABCDABDE";
 
-var result = KnuthMorrisPrattAlgorithm.Search(pattern, text);
-Console.WriteLine($"Pattern '{pattern}' occurs {occurrencesAmount} times in the text.");
+var occurrencesIndex = KnuthMorrisPrattAlgorithm.Search(pattern, text);
+Console.WriteLine($"Pattern '{pattern}' occurs at index {occurrencesIndex}.");
 ```
 
 ## Benchmarks

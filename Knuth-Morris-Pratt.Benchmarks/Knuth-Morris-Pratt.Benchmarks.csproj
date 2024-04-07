@@ -9,12 +9,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Knuth-Morris-Pratt\Knuth-Morris-Pratt.csproj" />
+        <ProjectReference Include="..\Knuth-Morris-Pratt\Knuth-Morris-Pratt.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
-      <PackageReference Include="BenchmarkDotNet.Annotations" Version="0.13.12" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.12"/>
+        <PackageReference Include="BenchmarkDotNet.Annotations" Version="0.13.12"/>
     </ItemGroup>
 
 </Project>

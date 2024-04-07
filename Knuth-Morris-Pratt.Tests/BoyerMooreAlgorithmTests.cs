@@ -7,23 +7,23 @@ namespace Knuth_Morris_Pratt.Tests;
 public class BoyerMooreAlgorithmTests
 {
     [Fact]
-    public void Should_Find_Pattern_Amount_Correctly()
+    public void Should_Find_Pattern_Correctly()
     {
         var pattern = "ABCDABD";
         var text = "ABC ABCDAB ABCDABCDABDE";
 
         var result = BoyerMooreAlgorithm.Search(pattern, text);
-        result.Should().Be(1);
+        result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
     }
 
     [Fact]
-    public void Should_Not_Find_Any_Pattern_Amount()
+    public void Should_Not_Find_Any_Pattern()
     {
         var pattern = "Pizza";
         var text = "asdasdasdasdadsPiasdasdaasdnasdasd";
 
         var result = BoyerMooreAlgorithm.Search(pattern, text);
-        result.Should().Be(0);
+        result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
     }
 
     [Fact]
@@ -33,7 +33,7 @@ public class BoyerMooreAlgorithmTests
         var text = "asdasdaPisdasdadsPizzaasdnasdasdasdasdaPisdasdadsPizzaasdnasdasd";
 
         var result = BoyerMooreAlgorithm.Search(pattern, text);
-        result.Should().Be(2);
+        result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
     }
 
     [Fact]
@@ -43,6 +43,6 @@ public class BoyerMooreAlgorithmTests
         var text = "asdasdaPizzasdasdadspIZZaasdnasdasd";
 
         var result = BoyerMooreAlgorithm.Search(pattern, text);
-        result.Should().Be(1);
+        result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
     }
 }

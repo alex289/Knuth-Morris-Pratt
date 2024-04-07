@@ -11,17 +11,17 @@ public class KnuthMorrisPrattAlgorithmTests
         var pattern = "ababcabab";
 
         var prefixTable = KnuthMorrisPrattAlgorithm.PrefixAnalysis(pattern);
-        prefixTable.Should().BeEquivalentTo([-1, 0, 0, 1, 2, 0, 1, 2, 3, 4]);
+        prefixTable.Should().BeEquivalentTo([0, 0, 1, 2, 0, 1, 2, 3, 4]);
     }
 
     [Fact]
-    public void Should_Find_Pattern_Amount_Correctly()
+    public void Should_Find_Pattern_Correctly()
     {
         var pattern = "ABCDABD";
         var text = "ABC ABCDAB ABCDABCDABDE";
 
         var result = KnuthMorrisPrattAlgorithm.Search(pattern, text);
-        result.Should().Be(1);
+        result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
 
         // Manually getting the prefix table should also work
         var prefixTable = KnuthMorrisPrattAlgorithm.PrefixAnalysis(pattern);
@@ -31,23 +31,13 @@ public class KnuthMorrisPrattAlgorithmTests
     }
 
     [Fact]
-    public void Should_Not_Find_Any_Pattern_Amount()
+    public void Should_Not_Find_Any_Pattern()
     {
         var pattern = "Pizza";
         var text = "asdasdasdasdadsPiasdasdaasdnasdasd";
 
         var result = KnuthMorrisPrattAlgorithm.Search(pattern, text);
-        result.Should().Be(0);
-    }
-
-    [Fact]
-    public void Should_Find_Multiple_Occurences()
-    {
-        var pattern = "Pizza";
-        var text = "asdasdaPisdasdadsPizzaasdnasdasdasdasdaPisdasdadsPizzaasdnasdasd";
-
-        var result = KnuthMorrisPrattAlgorithm.Search(pattern, text);
-        result.Should().Be(2);
+        result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
     }
 
     [Fact]
@@ -57,6 +47,6 @@ public class KnuthMorrisPrattAlgorithmTests
         var text = "asdasdaPizzasdasdadspIZZaasdnasdasd";
 
         var result = KnuthMorrisPrattAlgorithm.Search(pattern, text);
-        result.Should().Be(1);
+        result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
     }
 }
