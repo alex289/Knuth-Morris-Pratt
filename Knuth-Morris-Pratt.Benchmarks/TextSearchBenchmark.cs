@@ -16,7 +16,7 @@ public class TextSearchBenchmark
     public void Setup()
     {
         const string initialText =
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nisl nec nisl lacinia luctus. Sed euismod, nisl sit amet aliquet aliquam, nisl nisl aliquet nisl, nec aliquet nisl nisl s";
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nisl nec nisl lacinia luctus. Sed euismod, nisl sit amet aliquet aliquam, nisl nisl aliquet nisl, nec aliquet nisl nisl";
 
         for (var i = 0; i < StringLength; i++)
         {

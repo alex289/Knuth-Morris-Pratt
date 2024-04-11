@@ -44,7 +44,7 @@ public static class BoyerMooreAlgorithm
     /// <returns>The jump table.</returns>
     private static IList<int> MakeCharTable(string pattern)
     {
-        const int alphabetSize = 256;
+        const int alphabetSize = 256; // or the maximum possible number of characters
         var table = new int[alphabetSize];
 
         for (var i = 0; i < table.Length; ++i)

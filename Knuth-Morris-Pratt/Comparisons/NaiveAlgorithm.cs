@@ -16,19 +16,15 @@ public static class NaiveAlgorithm
         var n = text.Length;
         var m = pattern.Length;
 
-        for (var i = 0; i <= n - m; i++)
+        var i=0;
+        while (i<=n-m)
         {
-            int j;
-            for (j = 0; j < m; j++)
-            {
-                if (text[i + j] != pattern[j])
-                    break;
-            }
-
-            if (j == m)
-                return i; // pattern found at index i
+            var j = 0;
+            while (j<m && pattern[j]==text[i+j]) j++;
+            if (j==m) return i;
+            i++;
         }
 
-        return -1; // pattern not found in text
+        return -1;
     }
 }

@@ -12,7 +12,7 @@ public class BoyerMooreAlgorithmTests
         var pattern = "ABCDABD";
         var text = "ABC ABCDAB ABCDABCDABDE";
 
-        var result = BoyerMooreAlgorithm.Search(pattern, text);
+        var result = BoyerMooreAlgorithm.Search(text, pattern);
         result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
     }
 
@@ -22,7 +22,7 @@ public class BoyerMooreAlgorithmTests
         var pattern = "Pizza";
         var text = "asdasdasdasdadsPiasdasdaasdnasdasd";
 
-        var result = BoyerMooreAlgorithm.Search(pattern, text);
+        var result = BoyerMooreAlgorithm.Search(text, pattern);
         result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
     }
 
@@ -32,7 +32,7 @@ public class BoyerMooreAlgorithmTests
         var pattern = "Pizza";
         var text = "asdasdaPisdasdadsPizzaasdnasdasdasdasdaPisdasdadsPizzaasdnasdasd";
 
-        var result = BoyerMooreAlgorithm.Search(pattern, text);
+        var result = BoyerMooreAlgorithm.Search(text, pattern);
         result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
     }
 
@@ -42,7 +42,7 @@ public class BoyerMooreAlgorithmTests
         var pattern = "pIZZa";
         var text = "asdasdaPizzasdasdadspIZZaasdnasdasd";
 
-        var result = BoyerMooreAlgorithm.Search(pattern, text);
+        var result = BoyerMooreAlgorithm.Search(text, pattern);
         result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
     }
 }
