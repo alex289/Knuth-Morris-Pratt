@@ -10,7 +10,7 @@ public class TextSearchBenchmark
     private string _data = null!;
     private string _pattern = null!;
 
-    [Params(1, 10, 50, 100)] public int StringLength;
+    [Params(1, 50, 100)] public int StringLength;
 
     [GlobalSetup]
     public void Setup()
@@ -35,18 +35,18 @@ public class TextSearchBenchmark
     [Benchmark]
     public int KnuthMorrisPrattSearch()
     {
-        return KnuthMorrisPrattAlgorithm.Search(_data, _pattern);
+        return KnuthMorrisPrattAlgorithm.Search(_pattern, _data);
     }
 
     [Benchmark]
     public int NaiveSearch()
     {
-        return NaiveAlgorithm.Search(_data, _pattern);
+        return NaiveAlgorithm.Search(_pattern, _data);
     }
 
     [Benchmark]
     public int BoyerMooreSearch()
     {
-        return BoyerMooreAlgorithm.Search(_data, _data);
+        return BoyerMooreAlgorithm.Search(_data, _pattern);
     }
 }
