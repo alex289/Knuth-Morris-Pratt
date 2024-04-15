@@ -52,20 +52,19 @@ Apple M1 Pro, 1 CPU, 8 logical and 8 physical cores
 
 
 ```
-| Method                 | StringLength | Mean      | Error    | StdDev   | Ratio | RatioSD | Gen0   | Allocated | Alloc Ratio |
-|----------------------- |------------- |----------:|---------:|---------:|------:|--------:|-------:|----------:|------------:|
-| **OriginalIndexOf**        | **1**            |  **14.29 ns** | **0.020 ns** | **0.018 ns** |  **1.00** |    **0.00** |      **-** |         **-** |          **NA** |
-| KnuthMorrisPrattSearch | 1            |  96.22 ns | 0.203 ns | 0.180 ns |  6.73 |    0.01 | 0.0076 |      48 B |          NA |
-| NaiveSearch            | 1            |  76.70 ns | 0.091 ns | 0.081 ns |  5.37 |    0.01 |      - |         - |          NA |
-| BoyerMooreSearch       | 1            | 239.31 ns | 0.660 ns | 0.585 ns | 16.74 |    0.05 | 0.1745 |    1096 B |          NA |
-|                        |              |           |          |          |       |         |        |           |             |
-| **OriginalIndexOf**        | **50**           |  **14.33 ns** | **0.019 ns** | **0.018 ns** |  **1.00** |    **0.00** |      **-** |         **-** |          **NA** |
-| KnuthMorrisPrattSearch | 50           |  96.22 ns | 0.143 ns | 0.119 ns |  6.72 |    0.01 | 0.0076 |      48 B |          NA |
-| NaiveSearch            | 50           |  77.21 ns | 0.145 ns | 0.121 ns |  5.39 |    0.01 |      - |         - |          NA |
-| BoyerMooreSearch       | 50           | 238.41 ns | 0.596 ns | 0.498 ns | 16.64 |    0.04 | 0.1745 |    1096 B |          NA |
-|                        |              |           |          |          |       |         |        |           |             |
-| **OriginalIndexOf**        | **100**          |  **14.28 ns** | **0.020 ns** | **0.019 ns** |  **1.00** |    **0.00** |      **-** |         **-** |          **NA** |
-| KnuthMorrisPrattSearch | 100          |  96.18 ns | 0.119 ns | 0.111 ns |  6.73 |    0.01 | 0.0076 |      48 B |          NA |
-| NaiveSearch            | 100          |  76.68 ns | 0.086 ns | 0.072 ns |  5.37 |    0.01 |      - |         - |          NA |
-| BoyerMooreSearch       | 100          | 239.26 ns | 0.728 ns | 0.681 ns | 16.75 |    0.06 | 0.1745 |    1096 B |          NA |
-
+| Method                 | Pattern | Mean       | Error     | StdDev    | Ratio | RatioSD | Gen0   | Allocated | Alloc Ratio |
+|----------------------- |-------- |-----------:|----------:|----------:|------:|--------:|-------:|----------:|------------:|
+| **OriginalIndexOf**        | **euismod** |  **19.242 ns** | **0.0391 ns** | **0.0366 ns** |  **1.00** |    **0.00** |      **-** |         **-** |          **NA** |
+| KnuthMorrisPrattSearch | euismod | 118.144 ns | 0.5958 ns | 0.4975 ns |  6.14 |    0.03 | 0.0088 |      56 B |          NA |
+| NaiveSearch            | euismod |  93.230 ns | 0.0982 ns | 0.0820 ns |  4.84 |    0.01 |      - |         - |          NA |
+| BoyerMooreSearch       | euismod | 250.480 ns | 0.3153 ns | 0.2950 ns | 13.02 |    0.03 | 0.1760 |    1104 B |          NA |
+|                        |         |            |           |           |       |         |        |           |             |
+| **OriginalIndexOf**        | **forum**   |  **22.419 ns** | **0.1191 ns** | **0.1114 ns** |  **1.00** |    **0.00** |      **-** |         **-** |          **NA** |
+| KnuthMorrisPrattSearch | forum   | 167.641 ns | 0.1283 ns | 0.1071 ns |  7.47 |    0.04 | 0.0076 |      48 B |          NA |
+| NaiveSearch            | forum   | 150.842 ns | 0.0953 ns | 0.0892 ns |  6.73 |    0.03 |      - |         - |          NA |
+| BoyerMooreSearch       | forum   | 374.263 ns | 0.7846 ns | 0.7340 ns | 16.69 |    0.10 | 0.1745 |    1096 B |          NA |
+|                        |         |            |           |           |       |         |        |           |             |
+| **OriginalIndexOf**        | **Lorem**   |   **6.767 ns** | **0.0050 ns** | **0.0047 ns** |  **1.00** |    **0.00** |      **-** |         **-** |          **NA** |
+| KnuthMorrisPrattSearch | Lorem   |  15.052 ns | 0.0179 ns | 0.0168 ns |  2.22 |    0.00 | 0.0076 |      48 B |          NA |
+| NaiveSearch            | Lorem   |   2.991 ns | 0.0035 ns | 0.0031 ns |  0.44 |    0.00 |      - |         - |          NA |
+| BoyerMooreSearch       | Lorem   | 142.236 ns | 0.1946 ns | 0.1821 ns | 21.02 |    0.03 | 0.1745 |    1096 B |          NA |
