@@ -35,4 +35,16 @@ public class NaiveAlgorithmTests
         var result = NaiveAlgorithm.Search(pattern, text);
         result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
     }
+    
+    [Theory]
+    [InlineData("Zelda")]
+    [InlineData("thatched")]
+    [InlineData("facility")]
+    public void Should_Find_Pattern_In_Data(string pattern)
+    {
+        var text = File.ReadAllText("Data.txt");
+
+        var result = NaiveAlgorithm.Search(pattern, text);
+        result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
+    }
 }

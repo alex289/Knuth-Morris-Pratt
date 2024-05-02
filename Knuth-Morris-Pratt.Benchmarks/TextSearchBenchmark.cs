@@ -7,31 +7,38 @@ namespace Knuth_Morris_Pratt.Benchmarks;
 [MemoryDiagnoser]
 public class TextSearchBenchmark
 {
-    private const string Data = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed nisl nec nisl lacinia luctus. Sed euismod, nisl sit amet aliquet aliquam, nisl nisl aliquet nisl, nec aliquet nisl forum";
+    private string _data = string.Empty;
 
-    [Params("Lorem", "euismod", "forum")] public string Pattern;
+    [Params("Zelda", "thatched", "facility")]
+    public string Pattern;
+    
+    [GlobalSetup]
+    public void GlobalSetup()
+    {
+        _data = File.ReadAllText("Data.txt");
+    }
 
     [Benchmark(Baseline = true)]
     public int OriginalIndexOf()
     {
-        return Data.IndexOf(Pattern, StringComparison.Ordinal);
+        return _data.IndexOf(Pattern, StringComparison.Ordinal);
     }
 
     [Benchmark]
     public int KnuthMorrisPrattSearch()
     {
-        return KnuthMorrisPrattAlgorithm.Search(Pattern, Data);
+        return KnuthMorrisPrattAlgorithm.Search(Pattern, _data);
     }
 
     [Benchmark]
     public int NaiveSearch()
     {
-        return NaiveAlgorithm.Search(Pattern, Data);
+        return NaiveAlgorithm.Search(Pattern, _data);
     }
 
     [Benchmark]
     public int BoyerMooreSearch()
     {
-        return BoyerMooreAlgorithm.Search(Data, Pattern);
+        return BoyerMooreAlgorithm.Search(_data, Pattern);
     }
 }

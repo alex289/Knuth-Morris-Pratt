@@ -5,25 +5,93 @@ namespace Knuth_Morris_Pratt.Comparisons;
 /// </summary>
 public static class BoyerMooreAlgorithm
 {
+    private static bool IsPrefix(string needle, int position)
+    {
+        for (int i = position, j = 0; i < needle.Length; ++i, ++j)
+        {
+            if (needle[i] != needle[j])
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static int SuffixSize(string needle, int position)
+    {
+        int size = 0, i = position, j = needle.Length - 1;
+
+        while (i >= 0 && needle[i] == needle[j])
+        {
+            --i;
+            --j;
+            ++size;
+        }
+
+        return size;
+    }
+
+    private static List<int> MakeCharTable(string needle)
+    {
+        var table = new List<int>(char.MaxValue);
+
+        for (int i = 0; i < char.MaxValue; i++)
+        {
+            table.Add(needle.Length);
+        }
+
+        for (int i = 0; i < needle.Length - 1; ++i)
+        {
+            table[needle[i]] = needle.Length - 1 - i;
+        }
+
+        return table;
+    }
+
+    private static List<int> MakeOffsetTable(string needle)
+    {
+        var table = new List<int>(needle.Length);
+        int lastPrefixPosition = needle.Length;
+
+        for (int i = needle.Length; i > 0; --i)
+        {
+            if (IsPrefix(needle, i))
+            {
+                lastPrefixPosition = i;
+            }
+
+            table.Add(lastPrefixPosition - i + needle.Length);
+        }
+
+        for (int i = 0; i < needle.Length - 1; ++i)
+        {
+            int size = SuffixSize(needle, i);
+            table[size] = needle.Length - 1 - i + size;
+        }
+
+        return table;
+    }
+
     /// <summary>
     ///     Searches for the given pattern in the given text.
     /// </summary>
-    /// <param name="pattern">The pattern to search for.</param>
     /// <param name="text">The text to search in.</param>
+    /// <param name="pattern">The pattern to search for.</param>
     /// <returns>The index of the found pattern (-1 if not found).</returns>
     public static int Search(string text, string pattern)
     {
         if (pattern.Length == 0)
         {
-            return -1;
+            return 0;
         }
 
-        var charTable = MakeCharTable(pattern);
-        var offsetTable = MakeOffsetTable(pattern);
+        List<int> charTable = MakeCharTable(pattern);
+        List<int> offsetTable = MakeOffsetTable(pattern);
 
         for (int i = pattern.Length - 1, j; i < text.Length;)
         {
-            for (j = pattern.Length - 1; pattern[j] == text[i]; i--, j--)
+            for (j = pattern.Length - 1; pattern[j] == text[i]; --i, --j)
             {
                 if (j == 0)
                 {
@@ -35,94 +103,5 @@ public static class BoyerMooreAlgorithm
         }
 
         return -1;
-    }
-
-    /// <summary>
-    ///     Makes the jump table based on the mismatched character information.
-    /// </summary>
-    /// <param name="pattern">The pattern to search for.</param>
-    /// <returns>The jump table.</returns>
-    private static IList<int> MakeCharTable(string pattern)
-    {
-        const int alphabetSize = 256; // or the maximum possible number of characters
-        var table = new int[alphabetSize];
-
-        for (var i = 0; i < table.Length; ++i)
-        {
-            table[i] = pattern.Length;
-        }
-
-        for (var i = 0; i < pattern.Length; ++i)
-        {
-            table[pattern[i]] = pattern.Length - 1 - i;
-        }
-
-        return table;
-    }
-
-    /// <summary>
-    ///     Makes the jump table based on the mismatched character information.
-    /// </summary>
-    /// <param name="pattern">The pattern to search for.</param>
-    /// <returns>The jump table.</returns>
-    private static IList<int> MakeOffsetTable(string pattern)
-    {
-        var table = new int[pattern.Length];
-        var lastPrefixPosition = pattern.Length;
-
-        for (var i = pattern.Length; i > 0; i--)
-        {
-            if (IsPrefix(pattern, i))
-            {
-                lastPrefixPosition = i;
-            }
-
-            table[pattern.Length - i] = lastPrefixPosition - i + pattern.Length;
-        }
-
-        for (var i = 0; i < pattern.Length - 1; ++i)
-        {
-            var suffixLength = SuffixLength(pattern, i);
-            table[suffixLength] = pattern.Length - 1 - i + suffixLength;
-        }
-
-        return table;
-    }
-
-    /// <summary>
-    ///     Returns true if the pattern is a prefix of the string ending at the given position.
-    /// </summary>
-    /// <param name="pattern">The pattern to search for.</param>
-    /// <param name="p">The position to end the suffix at.</param>
-    /// <returns>True if the pattern is a prefix of the string ending at the given position.</returns>
-    private static bool IsPrefix(string pattern, int p)
-    {
-        for (int i = p, j = 0; i < pattern.Length; ++i, ++j)
-        {
-            if (pattern[i] != pattern[j])
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    /// <summary>
-    ///     Returns the length of the suffix of the pattern ending at the given position.
-    /// </summary>
-    /// <param name="pattern">The pattern to search for.</param>
-    /// <param name="p">The position to end the suffix at.</param>
-    /// <returns>The length of the suffix.</returns>
-    private static int SuffixLength(string pattern, int p)
-    {
-        var length = 0;
-
-        for (int i = p, j = pattern.Length - 1; i >= 0 && pattern[i] == pattern[j]; --i, --j)
-        {
-            length += 1;
-        }
-
-        return length;
     }
 }
