@@ -5,7 +5,7 @@ namespace Knuth_Morris_Pratt.Comparisons;
 /// </summary>
 public static class BoyerMooreAlgorithm
 {
-    private static bool IsPrefix(string needle, int position)
+    private static bool IsPrefix(ReadOnlySpan<char> needle, int position)
     {
         for (int i = position, j = 0; i < needle.Length; ++i, ++j)
         {
@@ -18,7 +18,7 @@ public static class BoyerMooreAlgorithm
         return true;
     }
 
-    private static int SuffixSize(string needle, int position)
+    private static int SuffixSize(ReadOnlySpan<char> needle, int position)
     {
         int size = 0, i = position, j = needle.Length - 1;
 
@@ -32,7 +32,7 @@ public static class BoyerMooreAlgorithm
         return size;
     }
 
-    private static List<int> MakeCharTable(string needle)
+    private static List<int> MakeCharTable(ReadOnlySpan<char> needle)
     {
         var table = new List<int>(char.MaxValue);
 
@@ -49,7 +49,7 @@ public static class BoyerMooreAlgorithm
         return table;
     }
 
-    private static List<int> MakeOffsetTable(string needle)
+    private static List<int> MakeOffsetTable(ReadOnlySpan<char> needle)
     {
         var table = new List<int>(needle.Length);
         int lastPrefixPosition = needle.Length;
@@ -79,7 +79,7 @@ public static class BoyerMooreAlgorithm
     /// <param name="text">The text to search in.</param>
     /// <param name="pattern">The pattern to search for.</param>
     /// <returns>The index of the found pattern (-1 if not found).</returns>
-    public static int Search(string text, string pattern)
+    public static int Search(ReadOnlySpan<char> text, ReadOnlySpan<char> pattern)
     {
         if (pattern.Length == 0)
         {

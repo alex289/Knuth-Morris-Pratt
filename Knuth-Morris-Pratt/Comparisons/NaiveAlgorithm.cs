@@ -11,7 +11,7 @@ public static class NaiveAlgorithm
     /// <param name="pattern">The pattern to search for.</param>
     /// <param name="text">The text to search in.</param>
     /// <returns>The index of the found pattern (-1 if not found).</returns>
-    public static int Search(string pattern, string text)
+    public static int Search(ReadOnlySpan<char> pattern, ReadOnlySpan<char> text)
     {
         var n = text.Length;
         var m = pattern.Length;

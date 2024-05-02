@@ -10,7 +10,7 @@ public static class KnuthMorrisPrattAlgorithm
     /// </summary>
     /// <param name="pattern">The pattern to analyze.</param>
     /// <returns>The prefix table for the given pattern.</returns>
-    public static int[] PrefixAnalysis(string pattern)
+    public static int[] PrefixAnalysis(ReadOnlySpan<char> pattern)
     {
         var prefixTable = new int[pattern.Length];
         var prefixLength = 0;
@@ -39,21 +39,9 @@ public static class KnuthMorrisPrattAlgorithm
     /// <param name="pattern">The pattern to search for.</param>
     /// <param name="text">The text to search in.</param>
     /// <returns>The index of the found pattern (-1 if not found).</returns>
-    public static int Search(string pattern, string text)
+    public static int Search(ReadOnlySpan<char> pattern, ReadOnlySpan<char> text)
     {
         var prefixTable = PrefixAnalysis(pattern);
-        return Search(pattern, prefixTable, text);
-    }
-
-    /// <summary>
-    ///     Searches for the given pattern in the given text using the provided prefix table.
-    /// </summary>
-    /// <param name="pattern">The pattern to search for.</param>
-    /// <param name="prefixTable">The prefix table to use for the search.</param>
-    /// <param name="text">The text to search in.</param>
-    /// <returns>The index of the found pattern (-1 if not found).</returns>
-    public static int Search(string pattern, int[] prefixTable, string text)
-    {
         var j = 0;
         for (var i = 0; i < text.Length; i++)
         {
@@ -69,10 +57,10 @@ public static class KnuthMorrisPrattAlgorithm
 
             if (j == pattern.Length)
             {
-                return i - j + 1; // pattern found at index i - j + 1
+                return i - j + 1;
             }
         }
 
-        return -1; // pattern not found in text
+        return -1;
     }
 }

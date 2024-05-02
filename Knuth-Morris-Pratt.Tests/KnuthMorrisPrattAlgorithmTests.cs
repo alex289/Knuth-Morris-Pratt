@@ -22,12 +22,6 @@ public class KnuthMorrisPrattAlgorithmTests
 
         var result = KnuthMorrisPrattAlgorithm.Search(pattern, text);
         result.Should().Be(text.IndexOf(pattern, StringComparison.Ordinal));
-
-        // Manually getting the prefix table should also work
-        var prefixTable = KnuthMorrisPrattAlgorithm.PrefixAnalysis(pattern);
-        var resultWithPrefixTable = KnuthMorrisPrattAlgorithm.Search(pattern, prefixTable, text);
-
-        resultWithPrefixTable.Should().Be(result);
     }
 
     [Fact]
