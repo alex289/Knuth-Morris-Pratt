@@ -11,7 +11,7 @@ public class KnuthMorrisPrattAlgorithmTests
         var pattern = "ababcabab";
 
         var prefixTable = KnuthMorrisPrattAlgorithm.PrefixAnalysis(pattern);
-        prefixTable.Should().BeEquivalentTo([0, 0, 1, 2, 0, 1, 2, 3, 4]);
+        prefixTable.Should().BeEquivalentTo([-1, 0, 0, 1, 2, 0, 1, 2, 3, 4]);
     }
 
     [Fact]

@@ -12,22 +12,21 @@ public static class KnuthMorrisPrattAlgorithm
     /// <returns>The prefix table for the given pattern.</returns>
     public static int[] PrefixAnalysis(ReadOnlySpan<char> pattern)
     {
-        var prefixTable = new int[pattern.Length];
-        var prefixLength = 0;
+        int i = 0, prefixLength = -1;
+        var prefixTable = new int[pattern.Length + 1];
+        prefixTable[i]=prefixLength;
 
-        for (var i = 1; i < pattern.Length; i++)
+        while (i<pattern.Length)
         {
-            while (prefixLength > 0 && pattern[prefixLength] != pattern[i])
+            while (prefixLength >= 0 && pattern[i] != pattern[prefixLength])
             {
-                prefixLength = prefixTable[prefixLength - 1];
+                prefixLength=prefixTable[prefixLength];
             }
-
-            if (pattern[prefixLength] == pattern[i])
-            {
-                prefixLength++;
-            }
-
-            prefixTable[i] = prefixLength;
+            
+            i++;
+            prefixLength++;
+            
+            prefixTable[i]=prefixLength;
         }
 
         return prefixTable;
@@ -47,7 +46,7 @@ public static class KnuthMorrisPrattAlgorithm
         {
             while (j > 0 && pattern[j] != text[i])
             {
-                j = prefixTable[j - 1];
+                j = prefixTable[j];
             }
 
             if (pattern[j] == text[i])
