@@ -22,10 +22,10 @@ public static class KnuthMorrisPrattAlgorithm
             {
                 prefixLength=prefixTable[prefixLength];
             }
-            
+
             i++;
             prefixLength++;
-            
+
             prefixTable[i]=prefixLength;
         }
 
